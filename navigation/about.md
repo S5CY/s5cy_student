@@ -5,134 +5,415 @@ permalink: /about/
 comments: true
 ---
 
-## As a conversation Starter
+## 🌍 As a Conversation Starter
 
 Here are some places I have lived.
 
-<comment>
-Flags are made using Wikipedia images
-</comment>
-
 <style>
-    /* Style looks pretty compact, 
-       - grid-container and grid-item are referenced the code 
-    */
-    .grid-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Dynamic columns */
-        gap: 10px;
-    }
-    .grid-item {
-        text-align: center;
-    }
-    .grid-item img {
-        width: 100%;
-        height: 100px; /* Fixed height for uniformity */
-        object-fit: contain; /* Ensure the image fits within the fixed height */
-    }
-    .grid-item p {
-        margin: 5px 0; /* Add some margin for spacing */
-    }
+  :root{
+    --radius: 12px;
+    --shadow: 0 4px 10px rgba(0,0,0,0.10);
+    --shadow-lg: 0 12px 30px rgba(0,0,0,0.18);
+    --text: #222;
+    --text-strong: #111;
+    --ribbon-grad: linear-gradient(90deg,rgb(255, 77, 169),rgb(123, 28, 255),rgb(46, 196, 194));
+  }
 
-    .image-gallery {
-        display: flex;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        gap: 10px;
-        }
+  /* 背景：柔和漂浮色块 */
+  body::before{
+    content:"";
+    position: fixed;
+    inset:-20vmax;
+    background:
+      radial-gradient(40vmax 40vmax at 20% 30%, rgba(120,160,255,.25), transparent 60%),
+      radial-gradient(45vmax 45vmax at 80% 20%, rgba(255,120,200,.22), transparent 60%),
+      radial-gradient(35vmax 35vmax at 60% 80%, rgba(120,255,230,.20), transparent 60%);
+    filter: blur(30px);
+    z-index:-1;
+    animation: floatBg 18s linear infinite alternate;
+  }
+  @keyframes floatBg{ to{ transform: translateY(-2%) translateX(2%) scale(1.02); } }
 
-    .image-gallery img {
-        max-height: 150px;
-        object-fit: cover;
-        border-radius: 5px;
-    }
+  /* 顶部操作区 */
+  .toolbar{ display:flex; gap:10px; align-items:center; margin:10px 0 0; }
+  .btn{
+    border:0; border-radius: 999px; padding:10px 14px; font-size:.9rem; cursor:pointer;
+    background: linear-gradient(135deg,#111,#333); color:#fff; box-shadow: var(--shadow);
+    transition: transform .15s ease, box-shadow .15s ease, opacity .15s ease; user-select:none;
+  }
+  .btn:hover{ transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+  .btn:active{ transform: translateY(0); opacity:.85; }
+
+  .grid-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 22px; margin-top: 16px;
+  }
+  .grid-item{
+    position: relative; border-radius: var(--radius); box-shadow: var(--shadow);
+    text-align: center; padding: 16px 16px 18px; overflow: hidden;
+    transform-style: preserve-3d; transition: transform 200ms ease, box-shadow 200ms ease, filter 200ms ease;
+    will-change: transform; isolation: isolate;
+  }
+  .grid-item:hover{ transform: translateY(-4px) rotateX(2deg) rotateY(-2deg); box-shadow: var(--shadow-lg); }
+
+  /* 卡片主题背景 */
+  .grid-item[data-theme="usa"], .grid-item[data-theme="california"]{
+    background: linear-gradient(135deg, rgb(124,170,255), rgb(51,153,255));
+  }
+  .grid-item[data-theme="china"]{ background: linear-gradient(135deg, rgb(222,41,16), rgb(255,115,80)); }
+  .grid-item[data-theme="neutral"]{ background: linear-gradient(135deg, #f0f0f3, #e5e7eb); }
+
+  /* 高光扫光 */
+  .grid-item::after{
+    content:""; position:absolute; inset:0;
+    background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,.18) 50%, transparent 70%);
+    transform: translateX(-120%) skewX(-10deg); transition: transform .6s ease; pointer-events:none; z-index:0;
+  }
+  .grid-item:hover::after{ transform: translateX(120%) skewX(-10deg); }
+
+  .grid-item img{ width:100%; height:120px; object-fit:contain; border-radius:10px; transition:.3s; background:transparent; z-index:1; position:relative; }
+  .grid-item img:hover{ transform: scale(1.05); }
+  .grid-item p{ margin:10px 0 5px; font-size:.98rem; color:var(--text); z-index:1; position:relative; }
+  .grid-item p:first-of-type{ font-weight:700; color:var(--text-strong); }
+
+  /* 彩带标签 */
+  .ribbon{
+    position:absolute; top:12px; left:-44px; width:170px; text-align:center; line-height:26px; font-size:.82rem;
+    font-weight:800; letter-spacing:.2px; color:#fff; transform: rotate(-45deg); background: var(--ribbon-grad);
+    box-shadow: 0 2px 6px rgba(0,0,0,.25); animation: ribbonWave 3s infinite ease-in-out; z-index:2;
+    text-shadow: 0 1px 1px rgba(0,0,0,.25);
+  }
+  @keyframes ribbonWave{ 0%,100%{ transform: rotate(-45deg) translateY(0); } 50%{ transform: rotate(-45deg) translateY(3px); } }
+  .sticker{ position:absolute; right:8px; top:8px; font-size:22px; filter: drop-shadow(0 2px 4px rgba(0,0,0,.25)); z-index:2; }
+  .chip{
+    display:inline-block; padding:4px 10px; border-radius:999px; font-size:.78rem; font-weight:600;
+    background: rgba(255,255,255,.65); backdrop-filter: blur(4px); box-shadow: 0 2px 6px rgba(0,0,0,.08);
+    margin-top:6px;
+  }
+  @media (max-width: 600px){ .grid-item{ padding:12px; } .grid-item img{ height:100px; } }
 </style>
 
-<!-- This grid_container class is used by CSS styling and the id is used by JavaScript connection -->
-<div class="grid-container" id="grid_container">
-    <!-- content will be added here by JavaScript -->
+<!-- 顶部按钮：庆祝彩带 -->
+<div class="toolbar">
+  <button class="btn" id="celebrateBtn">🎊 Celebrate</button>
+</div>
+
+<div class="grid-container" id="grid_container"></div>
+
+<script>
+  // ====== 数据 ======
+  var http_source = "https://upload.wikimedia.org/wikipedia/commons/";
+  var living_in_the_world = [
+    {
+      flag: "0/01/Flag_of_California.svg",
+      greeting: "Hi 👋",
+      description: "California — forever",
+      ribbon: "🏠 Home",
+      theme: "california",
+      sticker: "🌴",
+      chip: "Years: many"
+    },
+    {
+      flag: "f/fa/Flag_of_the_People%27s_Republic_of_China.svg",
+      greeting: "你好 👋",
+      description: "China — 1 year",
+      ribbon: "🇨🇳 1 year",
+      theme: "china",
+      sticker: "🥠",
+      chip: "Years: 1"
+    }
+  ];
+
+  // ====== 工具函数：生成卡片 ======
+  function makeCard({flag,greeting,description,ribbon,theme="neutral",sticker="✨",chip=""}){
+    var gridItem = document.createElement("div");
+    gridItem.className = "grid-item";
+    gridItem.setAttribute("data-theme", theme);
+
+    var ribbonEl = document.createElement("div");
+    ribbonEl.className = "ribbon";
+    ribbonEl.textContent = ribbon;
+
+    var stickerEl = document.createElement("div");
+    stickerEl.className = "sticker";
+    stickerEl.textContent = sticker;
+
+    var img = document.createElement("img");
+    img.src = http_source + flag;
+    img.alt = description + " Flag";
+
+    var desc = document.createElement("p");
+    desc.textContent = description;
+
+    var greet = document.createElement("p");
+    greet.textContent = greeting;
+
+    gridItem.appendChild(ribbonEl);
+    gridItem.appendChild(stickerEl);
+    gridItem.appendChild(img);
+    gridItem.appendChild(desc);
+    gridItem.appendChild(greet);
+
+    if(chip){
+      var chipEl = document.createElement("div");
+      chipEl.className = "chip";
+      chipEl.textContent = chip;
+      gridItem.appendChild(chipEl);
+    }
+    return gridItem;
+  }
+
+  // ====== 渲染地点 ======
+  var container = document.getElementById("grid_container");
+  living_in_the_world.forEach(item => container.appendChild(makeCard(item)));
+
+  // ====== 轻量彩带（表情）动画 ======
+  var celebrateBtn = document.getElementById("celebrateBtn");
+  celebrateBtn.addEventListener("click", () => {
+    launchEmojiConfetti(["✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫","✨","🌟","💫"]);
+  });
+
+  function launchEmojiConfetti(emojis){
+    const burstCount = 26;
+    for(let i=0;i<burstCount;i++){
+      const span = document.createElement("span");
+      span.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+      Object.assign(span.style,{
+        position:"fixed",
+        left: Math.random()*100+"vw",
+        top: "-10vh",
+        fontSize: (Math.random()*18+14)+"px",
+        transform: `rotate(${(Math.random()*40-20)}deg)`,
+        pointerEvents:"none",
+        zIndex: 9999,
+        filter: "drop-shadow(0 2px 3px rgba(0,0,0,.25))",
+        animation: `fall ${Math.random()*1+2.5}s cubic-bezier(.2,.8,.2,1) forwards`
+      });
+      document.body.appendChild(span);
+      // 比动画时间再多留一点
+      setTimeout(()=> span.remove(), 4500);
+    }
+  }
+
+  /* 新版 fall 动画：落到底 → 停留 → 再消失 */
+  const styleFall = document.createElement("style");
+  styleFall.textContent = `
+    @keyframes fall{
+      0%   { transform: translateY(0) rotate(0deg); opacity: 0; }
+      10%  { opacity: 1; }
+      80%  { transform: translateY(100vh) rotate(340deg); opacity: 1; }
+      95%  { transform: translateY(100vh) rotate(360deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(380deg); opacity: 0; }
+    }
+  `;
+  document.head.appendChild(styleFall);
+</script>
+
+---
+
+## 🚶 Journey through Life
+
+Here is what I did at those places:
+
+- 🏫 MR Elementary School in SD – 5 years  
+- 🏫 OV Middle School in SD – 2 years  
+- 🏫 Dipont School of Arts and Science in HZ – 1 year  
+- 🏫 Del Norte High School in SD – '28  
+
+---
+
+## 👨‍👩‍👧 Family
+
+Here are my family members:
+
+<div class="grid-container" id="family_container"></div>
+
+<script>
+  // Family 数据
+  var family_members = [
+    {
+      flag: "f/fa/Flag_of_the_People%27s_Republic_of_China.svg",
+      role: "Dad",
+      description: "Born in China",
+      ribbon: "👨 Dad",
+      theme: "china",
+      sticker: "🧧",
+      chip: "From CN"
+    },
+    {
+      flag: "f/fa/Flag_of_the_People%27s_Republic_of_China.svg",
+      role: "Mom",
+      description: "Born in China",
+      ribbon: "👩 Mom",
+      theme: "china",
+      sticker: "🌸",
+      chip: "From CN"
+    },
+    {
+      flag: "0/01/Flag_of_California.svg",
+      role: "Sister",
+      description: "Born in USA, now in 5th grade",
+      ribbon: "👧 Sister",
+      theme: "usa",
+      sticker: "👹",
+      chip: "Grade: 5"
+    }
+  ];
+
+  var familyContainer = document.getElementById("family_container");
+  family_members.forEach(member => {
+    const card = makeCard({
+      flag: member.flag,
+      greeting: member.role,
+      description: member.description,
+      ribbon: member.ribbon,
+      theme: member.theme,
+      sticker: member.sticker,
+      chip: member.chip
+    });
+    const ps = card.querySelectorAll("p");
+    if(ps.length >= 2){
+      ps[0].textContent = member.role;
+      ps[1].textContent = member.description;
+    }
+    familyContainer.appendChild(card);
+  });
+</script>
+
+<!-- ============================================================
+     可爱蟑螂 — 点击会跳一下
+=============================================================== -->
+<style>
+  .silly-roach-wrap{
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    width: 120px;
+    height: 180px;
+    z-index: 9999;
+    cursor: pointer; /* 鼠标变小手，提示可点 */
+  }
+
+  .silly-roach-svg{
+    width: 100%;
+    height: 100%;
+    transform-origin: 50% 90%;
+    animation: roach-bounce 2s ease-in-out infinite;
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,.25));
+  }
+  @keyframes roach-bounce{
+    0%,100%{ transform: translateY(0); }
+    50%    { transform: translateY(-6px); }
+  }
+
+  /* 点击时触发的跳跃动画 */
+  .jumping{
+    animation: roach-jump 0.5s ease-out;
+  }
+  @keyframes roach-jump{
+    0%   { transform: translateY(0) scale(1); }
+    30%  { transform: translateY(-30px) scale(1.05); }
+    60%  { transform: translateY(0) scale(0.98); }
+    100% { transform: translateY(0) scale(1); }
+  }
+
+  .roach-head{
+    transform-origin: 60px 60px;
+    animation: head-wobble 1.6s ease-in-out infinite;
+  }
+  @keyframes head-wobble{
+    0%   { transform: rotate(-4deg); }
+    50%  { transform: rotate(4deg); }
+    100% { transform: rotate(-4deg); }
+  }
+
+  .roach-antenna{
+    stroke: #222;
+    stroke-width: 5;
+    stroke-linecap: round;
+    transform-origin: inherit;
+    animation: antenna-flex 1.6s ease-in-out infinite;
+  }
+  @keyframes antenna-flex{
+    0%,100%{ transform: rotate(0deg); }
+    50%    { transform: rotate(3deg); }
+  }
+
+  .bell-group{
+    transform-origin: 60px 96px;
+    animation: bell-swing 1.6s ease-in-out infinite;
+  }
+  @keyframes bell-swing{
+    0%   { transform: rotate(-6deg); }
+    50%  { transform: rotate(6deg); }
+    100% { transform: rotate(-6deg); }
+  }
+
+  .collar-band{
+    stroke: red;
+    stroke-width: 4;
+    stroke-linecap: round;
+    fill: none;
+  }
+  .roach-bell{
+    fill: #ffd45c;
+    stroke: #a87b1f;
+    stroke-width: 2;
+  }
+  .belly-patch{
+    fill: #e7b994;
+    opacity: .55;
+  }
+</style>
+
+<div class="silly-roach-wrap" id="roach">
+  <svg class="silly-roach-svg" id="roachSvg" viewBox="0 0 120 180" xmlns="http://www.w3.org/2000/svg">
+    <!-- 身体 -->
+    <ellipse cx="60" cy="102" rx="35" ry="56"
+             fill="#a46b43" stroke="#222" stroke-width="6"/>
+    <ellipse class="belly-patch" cx="60" cy="118" rx="22" ry="30"/>
+
+    <!-- 手 -->
+    <line x1="45" y1="112" x2="56" y2="128" stroke="#222" stroke-width="6" stroke-linecap="round"/>
+    <line x1="75" y1="112" x2="64" y2="128" stroke="#222" stroke-width="6" stroke-linecap="round"/>
+    <!-- 腿 -->
+    <line x1="48" y1="150" x2="48" y2="170" stroke="#222" stroke-width="6" stroke-linecap="round"/>
+    <line x1="72" y1="150" x2="72" y2="170" stroke="#222" stroke-width="6" stroke-linecap="round"/>
+
+    <!-- 头 + 触角 -->
+    <g class="roach-head">
+      <line class="roach-antenna" x1="45" y1="28" x2="25" y2="8"/>
+      <line class="roach-antenna" x1="75" y1="28" x2="95" y2="8"/>
+      <ellipse cx="60" cy="60" rx="40" ry="34" fill="#c89062" stroke="#222" stroke-width="6"/>
+      <circle cx="45" cy="56" r="5" fill="#222"/>
+      <circle cx="75" cy="56" r="5" fill="#222"/>
+      <path d="M50 70 Q60 80 70 70" stroke="#222" stroke-width="5" fill="none" stroke-linecap="round"/>
+    </g>
+
+    <!-- 项圈 + 铃铛 -->
+    <g class="bell-group">
+      <path class="collar-band"
+            d="M 36 92 A 24 10 0 0 0 84 92"/>
+      <line x1="60" y1="94" x2="60" y2="102"
+            stroke="#a87b1f" stroke-width="3" stroke-linecap="round"/>
+      <circle class="roach-bell" cx="60" cy="110" r="9"/>
+      <line x1="60" y1="110" x2="60" y2="114"
+            stroke="#a87b1f" stroke-width="2.5" stroke-linecap="round"/>
+    </g>
+  </svg>
 </div>
 
 <script>
-    // 1. Make a connection to the HTML container defined in the HTML div
-    var container = document.getElementById("grid_container"); // This container connects to the HTML div
+  const roachSvg = document.getElementById("roachSvg");
+  const roach = document.getElementById("roach");
 
-    // 2. Define a JavaScript object for our http source and our data rows for the Living in the World grid
-    var http_source = "https://upload.wikimedia.org/wikipedia/commons/";
-    var living_in_the_world = [
-        {"flag": "0/01/Flag_of_California.svg", "greeting": "Hey", "description": "California - forever"},
-        {"flag": "b/b9/Flag_of_Oregon.svg", "greeting": "Hi", "description": "Oregon - 9 years"},
-        {"flag": "b/be/Flag_of_England.svg", "greeting": "Alright mate", "description": "England - 2 years"},
-        {"flag": "e/ef/Flag_of_Hawaii.svg", "greeting": "Aloha", "description": "Hawaii - 2 years"},
-    ];
-
-    // 3a. Consider how to update style count for size of container
-    // The grid-template-columns has been defined as dynamic with auto-fill and minmax
-
-    // 3b. Build grid items inside of our container for each row of data
-    for (const location of living_in_the_world) {
-        // Create a "div" with "class grid-item" for each row
-        var gridItem = document.createElement("div");
-        gridItem.className = "grid-item";  // This class name connects the gridItem to the CSS style elements
-        // Add "img" HTML tag for the flag
-        var img = document.createElement("img");
-        img.src = http_source + location.flag; // concatenate the source and flag
-        img.alt = location.flag + " Flag"; // add alt text for accessibility
-
-        // Add "p" HTML tag for the description
-        var description = document.createElement("p");
-        description.textContent = location.description; // extract the description
-
-        // Add "p" HTML tag for the greeting
-        var greeting = document.createElement("p");
-        greeting.textContent = location.greeting;  // extract the greeting
-
-        // Append img and p HTML tags to the grid item DIV
-        gridItem.appendChild(img);
-        gridItem.appendChild(description);
-        gridItem.appendChild(greeting);
-
-        // Append the grid item DIV to the container DIV
-        container.appendChild(gridItem);
-    }
+  roach.addEventListener("click", () => {
+    // 移除已有类，强制重触发动画
+    roachSvg.classList.remove("jumping");
+    void roachSvg.offsetWidth; // 触发重绘
+    roachSvg.classList.add("jumping");
+    // 动画结束后恢复正常
+    setTimeout(()=> roachSvg.classList.remove("jumping"), 500);
+  });
 </script>
-
-### Journey through Life
-
-Here is what I did at those places
-
-- 🏫 Lots of Elementary Schools in Tucson, LA, Honolulu, and Glendale (CA)
-- 🏫 Middle and High School in Glendale (CA), Hoover High graduated '77
-- 🎓 Glendale CA Community College, UCLA Extension, LA Wilshire Computer Tech School '77 to '79
-- ⛪ England, London Missionary for Church of Jesus Christ of Latter-day Saints '79 to '81
-- 💼 Culver City, Glendale CA founder at Ashton-Tate, original PC's dBase 2 and 3 '82 to '87
-- 🎓 Eugene Oregon Undergraduate CompSci Degree at University of Oregon (Go Ducks!) '89 to '91
-- 💼 Eugene Oregon, founder and owner @ Microniche `88, Point Control CAD CAM developer '91 to '96
-- 🏢 San Diego CA Qualcomm, Satellite Comm and 1st Mobile OS (BREW) '96 to '19
-- 👨‍🏫 San Diego CA Teacher of Computer Science @ Del Norte High School San Diego '19 to present
-
-### Culture, Family, and Fun
-
-Everything for me, as for many others, revolves around family and faith.
-
-- My mother told me that I was Danish, English. and Irish, here is my researched [family tree]({{site.baseurl}}/images/about/familytree.png)
-- My family is pretty big as I have been married twice, my 1st wife passed away.  We have had 5 kids, 4 adopted by me, 1 biological.  Plus, there are three grandkids.  My name to my grandkids is Abuilito.
-- The gallery of pics has some of my family, fun, culture and faith memories.
-
-<comment>
-Gallery of Pics, scroll to the right for more ...
-</comment>
-<div class="image-gallery">
-  <img src="{{site.baseurl}}/images/about/missionary.jpg" alt="Image 1">
-  <img src="{{site.baseurl}}/images/about/john_tamara.jpg" alt="Image 2">
-  <img src="{{site.baseurl}}/images/about/tamara_fam.jpg" alt="Image 3">
-  <img src="{{site.baseurl}}/images/about/surf.jpg" alt="Image 4">
-  <img src="{{site.baseurl}}/images/about/john_lora.jpg" alt="Image 5">
-  <img src="{{site.baseurl}}/images/about/lora_fam.jpg" alt="Image 6">
-  <img src="{{site.baseurl}}/images/about/lora_fam2.jpg" alt="Image 7">
-  <img src="{{site.baseurl}}/images/about/pj_party.jpg" alt="Image 8">
-  <img src="{{site.baseurl}}/images/about/trent_family.png" alt="Image 9">
-  <img src="{{site.baseurl}}/images/about/claire.jpg" alt="Image 10">
-  <img src="{{site.baseurl}}/images/about/grandkids.jpg" alt="Image 11">
-  <img src="{{site.baseurl}}/images/about/farm.jpg" alt="Image 12">
-</div>
