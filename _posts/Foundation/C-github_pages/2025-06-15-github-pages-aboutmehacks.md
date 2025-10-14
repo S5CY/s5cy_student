@@ -62,7 +62,7 @@ And here’s what it might look like after conversion:
     <li>Project-based learning</li>
     ...
     </ul>
-    <img src="/images/ccr.png" alt="csse">
+    <img src="images/ccr.png" alt="csse">
 
     ```
 
