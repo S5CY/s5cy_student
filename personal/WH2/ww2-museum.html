@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>World War II Museum | Pages 1-2</title>
+  <style>
+    :root {
+      --bg: #f4f1ea;
+      --paper: #fffdf8;
+      --ink: #1f2937;
+      --muted: #5b6470;
+      --gold: #b68c3a;
+      --olive: #6c7a3b;
+      --slate: #30475e;
+      --red: #8b2e2e;
+      --border: #d8d2c6;
+      --shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(rgba(15, 23, 42, 0.78), rgba(15, 23, 42, 0.78)),
+        url('https://images.unsplash.com/photo-1511884642898-4c92249e20b6?auto=format&fit=crop&w=1400&q=80') center/cover;
+      color: white;
+      padding: 80px 20px 60px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.6rem);
+      letter-spacing: 1px;
+    }
+
+    header p {
+      max-width: 900px;
+      margin: 16px auto 0;
+      font-size: 1.08rem;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--paper);
+      border-bottom: 2px solid var(--border);
+      box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+    }
+
+    .nav-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 14px 16px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--slate);
+      font-weight: 700;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #fff;
+    }
+
+    nav a:hover {
+      background: #f2ede3;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 30px 20px 80px;
+    }
+
+    .intro-card, .page-section, .sources-box {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .intro-card {
+      padding: 28px;
+      margin-bottom: 28px;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .mini-box {
+      background: #faf6ef;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    .page-section {
+      margin-top: 34px;
+      overflow: hidden;
+    }
+
+    .page-banner {
+      padding: 26px 28px;
+      color: white;
+    }
+
+    .page1 .page-banner {
+      background: linear-gradient(135deg, #6a4e20, #b68c3a);
+    }
+
+    .page2 .page-banner {
+      background: linear-gradient(135deg, #3d5223, #708d45);
+    }
+
+    .page-banner h2 {
+      margin: 0 0 8px;
+      font-size: clamp(1.7rem, 3vw, 2.5rem);
+    }
+
+    .page-banner p {
+      margin: 0;
+      max-width: 950px;
+      font-size: 1.05rem;
+    }
+
+    .content {
+      padding: 28px;
+    }
+
+    .essential {
+      border-left: 6px solid var(--red);
+      background: #fff8f6;
+      padding: 18px 20px;
+      border-radius: 14px;
+      margin-bottom: 24px;
+    }
+
+    .essential h3 {
+      margin-top: 0;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin: 24px 0 10px;
+    }
+
+    .info-panel {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      background: #fcfaf5;
+    }
+
+    .artifacts-title {
+      margin: 32px 0 14px;
+      font-size: 1.6rem;
+    }
+
+    .artifact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .artifact-card {
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      background: white;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.06);
+    }
+
+    .artifact-card img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .artifact-body {
+      padding: 18px;
+    }
+
+    .artifact-body h4 {
+      margin: 0 0 10px;
+      font-size: 1.1rem;
+    }
+
+    .caption-label {
+      display: inline-block;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 8px;
+    }
+
+    .source-link {
+      display: inline-block;
+      margin-top: 10px;
+      font-weight: 700;
+      color: var(--slate);
+      word-break: break-word;
+    }
+
+    .timeline, .comparison-table {
+      margin-top: 28px;
+    }
+
+    .timeline-item {
+      border-left: 4px solid var(--gold);
+      padding-left: 16px;
+      margin-bottom: 18px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      overflow: hidden;
+      border-radius: 16px;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 14px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #efe7d4;
+    }
+
+    .sources-box {
+      margin-top: 36px;
+      padding: 24px;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 28px 16px 50px;
+    }
+
+    .note {
+      font-size: 0.96rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 640px) {
+      header {
+        padding: 64px 16px 46px;
+      }
+
+      .content, .intro-card, .sources-box {
+        padding: 18px;
+      }
+
+      .page-banner {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>World War II Digital Museum</h1>
+    <p>
+      This exhibit answers two essential questions: what caused World War II, and who fought in it.
+      Each section uses concise historical explanations, artifact captions, and source links to present the story like a museum exhibit.
+    </p>
+  </header>
+
+  <nav>
+    <div class="nav-wrap">
+      <a href="#home">Home</a>
+      <a href="#page1">Page 1: Causes of WWII</a>
+      <a href="#page2">Page 2: Combatants of WWII</a>
+      <a href="#sources">Works Cited</a>
+    </div>
+  </nav>
+
+  <main>
+    <section id="home" class="intro-card">
+      <h2>Welcome to the Museum</h2>
+      <p>
+        World War II did not begin because of one single event. It grew out of unresolved anger after World War I,
+        global economic crisis, weak international cooperation, and the rise of aggressive authoritarian governments.
+        Once war began, two major sides emerged: the Allied Powers and the Axis Powers. Their goals, ideologies,
+        and military actions shaped the course of the conflict and the modern world that followed.
+      </p>
+
+      <div class="intro-grid">
+        <div class="mini-box">
+          <h3>What this site covers</h3>
+          <p>Two project pages, each with at least four artifacts, detailed captions, and source links at the end of each artifact.</p>
+        </div>
+        <div class="mini-box">
+          <h3>Museum focus</h3>
+          <p>Instead of only listing facts, this site explains how each artifact helps answer the essential question for that page.</p>
+        </div>
+        <div class="mini-box">
+          <h3>Teacher note</h3>
+          <p class="note">Replace any images or wording your teacher wants changed, then publish your Google Site and link it in Canvas.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="page1" class="page-section page1">
+      <div class="page-banner">
+        <h2>Page 1: Causes of World War II</h2>
+        <p>
+          Essential Question: What were the long-term and short-term causes of WWII?
+        </p>
+      </div>
+
+      <div class="content">
+        <div class="essential">
+          <h3>Answer to the Essential Question</h3>
+          <p>
+            The long-term causes of World War II came from the instability left behind by World War I.
+            The Treaty of Versailles punished Germany harshly, which created resentment and weakened the new Weimar Republic.
+            The Great Depression then made conditions even worse by causing unemployment, political extremism, and public desperation.
+            In that environment, fascist leaders such as Adolf Hitler gained support by promising national recovery, military strength, and expansion.
+          </p>
+          <p>
+            The short-term causes were the repeated acts of aggression that followed, including the remilitarization of the Rhineland,
+            the annexation of Austria, the seizure of the Sudetenland, and the invasion of Poland. These actions succeeded partly because
+            the League of Nations was weak and Britain and France used appeasement instead of force. Together, these conditions allowed
+            conflict to grow until another world war became unavoidable.
+          </p>
+        </div>
+
+        <div class="two-col">
+          <div class="info-panel">
+            <h3>Long-Term Causes</h3>
+            <ul>
+              <li>Treaty of Versailles and German resentment</li>
+              <li>Weaknesses of the Weimar Republic</li>
+              <li>Rise of fascism and dictatorship</li>
+              <li>Economic collapse during the Great Depression</li>
+            </ul>
+          </div>
+          <div class="info-panel">
+            <h3>Short-Term Causes</h3>
+            <ul>
+              <li>Failure of appeasement</li>
+              <li>Weak League of Nations</li>
+              <li>German expansion in Europe</li>
+              <li>Final trigger: invasion of Poland in 1939</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 class="artifacts-title">Artifacts</h3>
+        <div class="artifact-grid">
+          <article class="artifact-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Big_four_at_the_Paris_Peace_Conference%2C_27_May_1919.jpg/640px-Big_four_at_the_Paris_Peace_Conference%2C_27_May_1919.jpg" alt="Paris Peace Conference leaders in 1919">
+            <div class="artifact-body">
+              <span class="caption-label">Artifact 1</span>
+              <h4>Treaty of Versailles and the Paris Peace Conference</h4>
+              <p>
+                This artifact represents the peace settlement that followed World War I. The Treaty of Versailles blamed Germany for the war,
+                forced it to pay reparations, reduced its military, and took away territory. Many Germans saw the treaty as humiliating and unfair.
+                That resentment later helped extremist leaders gain support by promising to overturn the treaty.
+              </p>
+              <a class="source-link" href="https://commons.wikimedia.org/wiki/File:Big_four_at_the_Paris_Peace_Conference,_27_May_1919.jpg" target="_blank">Source</a>
+            </div>
+          </article>
+
+          <article class="artifact-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Bundesarchiv_Bild_102-14439%2C_Berlin%2C_Arbeitslose_vor_dem_Arbeitsamt.jpg/640px-Bundesarchiv_Bild_102-14439%2C_Berlin%2C_Arbeitslose_vor_dem_Arbeitsamt.jpg" alt="Unemployed people in Germany during economic crisis">
+            <div class="artifact-body">
+              <span class="caption-label">Artifact 2</span>
+              <h4>The Great Depression in Germany</h4>
+              <p>
+                This image shows the social effects of economic collapse. During the Great Depression, millions lost jobs and faith in democratic government.
+                In Germany, economic suffering made radical political parties look more appealing because they offered simple answers and strong leadership.
+                The depression did not cause war by itself, but it helped create the conditions in which fascism could rise.
+              </p>
+              <a class="source-link" href="https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_102-14439,_Berlin,_Arbeitslose_vor_dem_Arbeitsamt.jpg" target="_blank">Source</a>
+            </div>
+          </article>
+
+          <article class="artifact-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Bundesarchiv_Bild_183-H28422%2C_N%C3%BCrnberg%2C_Reichsparteitag%2C_Hitler_spricht.jpg/640px-Bundesarchiv_Bild_183-H28422%2C_N%C3%BCrnberg%2C_Reichsparteitag%2C_Hitler_spricht.jpg" alt="Hitler speaking at Nuremberg rally">
+            <div class="artifact-body">
+              <span class="caption-label">Artifact 3</span>
+              <h4>Rise of Fascism in Germany</h4>
+              <p>
+                Adolf Hitler and the Nazi Party used propaganda, nationalism, fear of communism, and anger over Germany's problems to win support.
+                This rally image shows how fascism relied on mass politics, emotional appeals, and total loyalty to the leader.
+                The rise of fascism was a major cause of WWII because it encouraged militarism, dictatorship, and expansion rather than compromise.
+              </p>
+              <a class="source-link" href="https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_183-H28422,_N%C3%BCrnberg,_Reichsparteitag,_Hitler_spricht.jpg" target="_blank">Source</a>
+            </div>
+          </article>
+
+          <article class="artifact-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/1938_Munich_Agreement.jpg/640px-1938_Munich_Agreement.jpg" alt="Leaders at Munich Agreement 1938">
+            <div class="artifact-body">
+              <span class="caption-label">Artifact 4</span>
+              <h4>Appeasement and the Munich Agreement</h4>
+              <p>
+                This artifact shows the policy of appeasement, when Britain and France allowed Hitler to take the Sudetenland in 1938 in the hope of avoiding war.
+                Instead of stopping aggression, appeasement convinced Hitler that the Western powers would not resist him. This made further expansion more likely.
+                It was one of the clearest short-term causes because it failed to stop Nazi Germany before the invasion of Poland.
+              </p>
+              <a class="source-link" href="https://commons.wikimedia.org/wiki/File:1938_Munich_Agreement.jpg" target="_blank">Source</a>
+            </div>
+          </article>
+
+          <article class="artifact-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Bundesarchiv_Bild_183-R94623%2C_Rheinlandbesetzung.jpg/640px-Bundesarchiv_Bild_183-R94623%2C_Rheinlandbesetzung.jpg" alt="German troops in the Rhineland">
+            <div class="artifact-body">
+              <span class="caption-label">Artifact 5</span>
+              <h4>Remilitarization of the Rhineland</h4>
+              <p>
+                In 1936, Hitler sent troops into the Rhineland, directly violating the Treaty of Versailles and the Locarno Treaties.
+                Britain and France did not respond militarily, which showed that international agreements could be broken without serious consequences.
+                This was important because it increased German confidence and weakened the remaining barriers to expansion.
+              </p>
+              <a class="source-link" href="https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_183-R94623,_Rheinlandbesetzung.jpg" target="_blank">Source</a>
+            </div>
+          </article>
+
+          <article class="artifact-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Stukas_over_Poland_1939.jpg/640px-Stukas_over_Poland_1939.jpg" alt="German attack on Poland in 1939">
+            <div class="artifact-body">
+              <span class="caption-label">Artifact 6</span>
+              <h4>Invasion of Poland, 1939</h4>
+              <p>
+                Germany's invasion of Poland on September 1, 1939, is widely recognized as the immediate event that began World War II in Europe.
+                After this attack, Britain and France declared war on Germany. This artifact matters because it marks the point when the earlier causes,
+                including diplomacy failures and expansionist policies, turned into open global conflict.
+              </p>
+              <a class="source-link" href="https://commons.wikimedia.org/wiki/File:Stukas_over_Poland_1939.jpg" target="_blank">Source</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="timeline">
+          <h3>Cause-and-Effect Timeline</h3>
+          <div class="timeline-item"><strong>1919:</strong> Treaty of Versailles leaves Germany humiliated and politically unstable.</div>
+          <div class="timeline-item"><strong>1929:</strong> The Great Depression deepens unemployment and social crisis.</div>
+          <div class="timeline-item"><strong>1933:</strong> Hitler becomes chancellor and begins building a dictatorship.</div>
+          <div class="timeline-item"><strong>1936–1938:</strong> Germany remilitarizes the Rhineland and annexes Austria and the Sudetenland.</div>
+          <div class="timeline-item"><strong>1939:</strong> Germany invades Poland, beginning World War II in Europe.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="page2" class="page-section page2">
+      <div class="page-banner">
+        <h2>Page 2: The Combatants of World War II</h2>
+        <p>
+          Essential Question: Who were the combatants of World War II and why did they fight?
+        </p>
+      </div>
+
+      <div class="content">
+        <div class="essential">
+          <h3>Answer to the Essential Question</h3>
+          <p>
+            The two main sides in World War II were the Allied Powers and the Axis Powers. The Allies eventually included countries such as Britain,
+            the Soviet Union, the United States, China, and France. Although these nations had different political systems and goals, they were united by the need to defeat Axis aggression.
+            Britain fought to defend Europe and resist German domination. The Soviet Union joined the Allied side after Germany invaded it in 1941,
+            turning the war on the Eastern Front into a life-or-death struggle. The United States entered after the Japanese attack on Pearl Harbor and fought to stop both Axis expansion and future threats to global stability.
+          </p>
+          <p>
+            The Axis Powers were led by Germany, Italy, and Japan. They fought for expansion, authoritarian control, imperial conquest, and ideologies rooted in militarism,
+            fascism, and racial superiority. Germany sought Lebensraum and a racially ordered empire in Europe. Italy aimed to expand its power and revive imperial influence.
+            Japan pursued military domination in East Asia and the Pacific. These conflicting goals between the Allies and Axis turned the war into a struggle over territory,
+            government, human rights, and the future balance of world power.
+          </p>
+        </div>
+
+        <div class="comparison-table">
+          <h3>Comparing the Two Sides</h3>
+          <table>
+            <tr>
+              <th>Side</th>
+              <th>Main Countries</th>
+              <th>Why They Fought</th>
+              <th>Key Ideas / Goals</th>
+            </tr>
+            <tr>
+              <td>Allied Powers</td>
+              <td>Britain, Soviet Union, United States, China, Free France</td>
+              <td>To stop aggression, defend territory, protect allies, and defeat expansionist dictatorships</td>
+              <td>Self-defense, collective security, democracy in some nations, survival, anti-fascism</td>
+            </tr>
+            <tr>
+              <td>Axis Powers</td>
+              <td>Germany, Italy, Japan</td>
+              <td>To expand territory, build empires, and dominate regions through force</td>
+              <td>Fascism, militarism, imperialism, totalitarianism, racial superiority</td>
+            </tr>
+          </table>
+        </div>
+
+        <h3 class="artifacts-title">Artifacts</h3>
+        <div class="artifact-grid">
+          <article class="artifact-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/United_Nations_Fight_for_Freedom_poster.jpg/640px-United_Nations_Fight_for_Freedom_poster.jpg" alt="Allied propaganda poster">
+            <div class="artifact-body">
+              <span class="caption-label">Artifact 1</span>
+              <h4>Allied Powers Propaganda Poster</h4>
+              <p>
+                This poster reflects the Allied idea that the war was a fight against conquest and tyranny. Allied nations did not all share the same political beliefs,
+                but they cooperated because the Axis threatened their independence and international stability. The poster is important because it shows how the Allies presented their cause as a shared defense of freedom and survival.
+              </p>
+              <a class="source-link" href="https://commons.wikimedia.org/wiki/File:United_Nations_Fight_for_Freedom_poster.jpg" target="_blank">Source</a>
+            </div>
+          </article>
+
+          <article class="artifact-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Churchill_V_sign_HU_55521.jpg/640px-Churchill_V_sign_HU_55521.jpg" alt="Winston Churchill making V sign">
+            <div class="artifact-body">
+              <span class="caption-label">Artifact 2</span>
+              <h4>Britain and the Fight Against Nazi Expansion</h4>
+              <p>
+                Britain became one of the first major powers to continue resisting Hitler after the fall of France. This artifact represents British determination to prevent German control of Europe.
+                Britain fought partly for national survival, but also to defend the balance of power on the continent and maintain its alliances. It is a strong symbol of Allied resistance.
+              </p>
+              <a class="source-link" href="https://commons.wikimedia.org/wiki/File:Churchill_V_sign_HU_55521.jpg" target="_blank">Source</a>
+            </div>
+          </article>
+
+          <article class="artifact-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Bundesarchiv_Bild_183-S69279%2C_Adolf_Hitler.jpg/640px-Bundesarchiv_Bild_183-S69279%2C_Adolf_Hitler.jpg" alt="Adolf Hitler portrait">
+            <div class="artifact-body">
+              <span class="caption-label">Artifact 3</span>
+              <h4>Nazi Germany and Fascist Ideology</h4>
+              <p>
+                Nazi Germany was the leading Axis power in Europe. It fought to overturn the post-World War I order, expand eastward, and build a racial empire under totalitarian rule.
+                This artifact matters because it represents the ideology of fascism: dictatorship, militarism, censorship, nationalism, and belief in racial hierarchy.
+                These ideas shaped both Germany's war aims and its crimes against civilians.
+              </p>
+              <a class="source-link" href="https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_183-S69279,_Adolf_Hitler.jpg" target="_blank">Source</a>
+            </div>
+          </article>
+
+          <article class="artifact-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Japanese_troops_entering_Manila.jpg/640px-Japanese_troops_entering_Manila.jpg" alt="Japanese troops entering Manila">
+            <div class="artifact-body">
+              <span class="caption-label">Artifact 4</span>
+              <h4>Imperial Japan and Expansion in Asia</h4>
+              <p>
+                Japan was a key Axis power in the Pacific. Its leaders pursued imperial expansion to gain resources, territory, and regional dominance.
+                This artifact shows how Japanese military action spread the war across Asia and the Pacific. It helps explain that the Axis was not only a European alliance,
+                but a larger coalition driven by militarism and empire-building.
+              </p>
+              <a class="source-link" href="https://commons.wikimedia.org/wiki/File:Japanese_troops_entering_Manila.jpg" target="_blank">Source</a>
+            </div>
+          </article>
+
+          <article class="artifact-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Raising_the_Flag_on_Iwo_Jima%2C_larger_-_edit1.jpg/640px-Raising_the_Flag_on_Iwo_Jima%2C_larger_-_edit1.jpg" alt="US soldiers raising flag on Iwo Jima">
+            <div class="artifact-body">
+              <span class="caption-label">Artifact 5</span>
+              <h4>The United States After Pearl Harbor</h4>
+              <p>
+                The United States entered the war after Japan attacked Pearl Harbor in December 1941. This famous image symbolizes American commitment to defeating the Axis in both Europe and the Pacific.
+                The United States fought to respond to direct attack, support allies, and prevent Axis domination of key regions. Its industrial and military power became decisive to the Allied victory.
+              </p>
+              <a class="source-link" href="https://commons.wikimedia.org/wiki/File:Raising_the_Flag_on_Iwo_Jima,_larger_-_edit1.jpg" target="_blank">Source</a>
+            </div>
+          </article>
+
+          <article class="artifact-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Russian_army_enters_Budapest_Fortepan_71366.jpg/640px-Russian_army_enters_Budapest_Fortepan_71366.jpg" alt="Soviet troops in Europe">
+            <div class="artifact-body">
+              <span class="caption-label">Artifact 6</span>
+              <h4>The Soviet Union Joins the Allied Side</h4>
+              <p>
+                Although the Soviet Union was communist and very different politically from Britain and the United States, it joined the Allied side after Germany invaded in Operation Barbarossa.
+                This artifact represents the Eastern Front, where the Soviet Union fought a brutal war of survival against Nazi Germany. It helps explain why defeating Hitler mattered more to the Allies than ideological differences between them.
+              </p>
+              <a class="source-link" href="https://commons.wikimedia.org/wiki/File:Russian_army_enters_Budapest_Fortepan_71366.jpg" target="_blank">Source</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="two-col">
+          <div class="info-panel">
+            <h3>Allied Powers: Why They Fought</h3>
+            <ul>
+              <li>Britain fought to resist Nazi control of Europe.</li>
+              <li>The Soviet Union fought for survival after the German invasion.</li>
+              <li>The United States fought after Pearl Harbor and to stop Axis expansion.</li>
+              <li>China fought against long-term Japanese invasion and occupation.</li>
+            </ul>
+          </div>
+          <div class="info-panel">
+            <h3>Axis Powers: Why They Fought</h3>
+            <ul>
+              <li>Germany wanted territorial expansion and racial empire.</li>
+              <li>Italy sought imperial power and fascist prestige.</li>
+              <li>Japan wanted resources, territory, and dominance in East Asia and the Pacific.</li>
+              <li>All three relied on militarism and authoritarian government.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sources" class="sources-box">
+      <h2>Works Cited / Reference Links</h2>
+      <p>
+        These are the image sources used in the exhibit. You can keep them here and also leave the source link at the end of each artifact,
+        which matches your teacher's directions.
+      </p>
+      <ul>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Big_four_at_the_Paris_Peace_Conference,_27_May_1919.jpg" target="_blank">Paris Peace Conference photo</a></li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_102-14439,_Berlin,_Arbeitslose_vor_dem_Arbeitsamt.jpg" target="_blank">German unemployment image</a></li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_183-H28422,_N%C3%BCrnberg,_Reichsparteitag,_Hitler_spricht.jpg" target="_blank">Hitler rally image</a></li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:1938_Munich_Agreement.jpg" target="_blank">Munich Agreement image</a></li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_183-R94623,_Rheinlandbesetzung.jpg" target="_blank">Rhineland remilitarization image</a></li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Stukas_over_Poland_1939.jpg" target="_blank">Poland invasion image</a></li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:United_Nations_Fight_for_Freedom_poster.jpg" target="_blank">Allied poster</a></li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Churchill_V_sign_HU_55521.jpg" target="_blank">Churchill image</a></li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_183-S69279,_Adolf_Hitler.jpg" target="_blank">Hitler portrait</a></li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Japanese_troops_entering_Manila.jpg" target="_blank">Japanese troops in Manila</a></li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Raising_the_Flag_on_Iwo_Jima,_larger_-_edit1.jpg" target="_blank">Iwo Jima image</a></li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Russian_army_enters_Budapest_Fortepan_71366.jpg" target="_blank">Soviet troops image</a></li>
+      </ul>
+      <p class="note">
+        Important: if your teacher wants you to use your own researched artifacts instead of these sample ones, swap the images, keep the caption format,
+        and leave a source link at the end of each artifact.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>World War II Digital Museum Project • Pages 1-2</p>
+  </footer>
+</body>
+</html>
