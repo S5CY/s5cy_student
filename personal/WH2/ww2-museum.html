@@ -23,8 +23,12 @@
       scroll-behavior: smooth;
     }
 
-    body {
+    html, body {
       margin: 0;
+      padding: 0;
+    }
+
+    body {
       font-family: Arial, Helvetica, sans-serif;
       background: var(--bg);
       color: var(--ink);
@@ -32,8 +36,9 @@
     }
 
     header {
-      background: linear-gradient(rgba(15, 23, 42, 0.78), rgba(15, 23, 42, 0.78)),
-        url('https://images.unsplash.com/photo-1511884642898-4c92249e20b6?auto=format&fit=crop&w=1400&q=80') center/cover;
+      background:
+        linear-gradient(rgba(15, 23, 42, 0.82), rgba(15, 23, 42, 0.82)),
+        linear-gradient(135deg, #2d3748, #1f2937, #374151);
       color: white;
       padding: 80px 20px 60px;
       text-align: center;
@@ -78,10 +83,12 @@
       border-radius: 999px;
       border: 1px solid var(--border);
       background: #fff;
+      transition: 0.2s ease;
     }
 
     nav a:hover {
       background: #f2ede3;
+      transform: translateY(-1px);
     }
 
     main {
@@ -90,7 +97,9 @@
       padding: 30px 20px 80px;
     }
 
-    .intro-card, .page-section, .sources-box {
+    .intro-card,
+    .page-section,
+    .sources-box {
       background: var(--paper);
       border: 1px solid var(--border);
       border-radius: 20px;
@@ -192,17 +201,26 @@
       overflow: hidden;
       background: white;
       box-shadow: 0 8px 22px rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
 
     .artifact-card img {
       width: 100%;
-      height: 210px;
+      height: 220px;
       object-fit: cover;
+      object-position: center;
       display: block;
+      background: #e5e7eb;
+      border-bottom: 1px solid var(--border);
     }
 
     .artifact-body {
       padding: 18px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
     }
 
     .artifact-body h4 {
@@ -222,13 +240,20 @@
 
     .source-link {
       display: inline-block;
-      margin-top: 10px;
+      margin-top: auto;
+      padding-top: 10px;
       font-weight: 700;
       color: var(--slate);
       word-break: break-word;
+      text-decoration: none;
     }
 
-    .timeline, .comparison-table {
+    .source-link:hover {
+      text-decoration: underline;
+    }
+
+    .timeline,
+    .comparison-table {
       margin-top: 28px;
     }
 
@@ -244,6 +269,7 @@
       margin-top: 12px;
       overflow: hidden;
       border-radius: 16px;
+      background: white;
     }
 
     th, td {
@@ -262,6 +288,10 @@
       padding: 24px;
     }
 
+    .sources-box ul {
+      padding-left: 20px;
+    }
+
     footer {
       text-align: center;
       color: var(--muted);
@@ -278,12 +308,18 @@
         padding: 64px 16px 46px;
       }
 
-      .content, .intro-card, .sources-box {
+      .content,
+      .intro-card,
+      .sources-box {
         padding: 18px;
       }
 
       .page-banner {
         padding: 20px;
+      }
+
+      .artifact-card img {
+        height: 200px;
       }
     }
   </style>
@@ -326,8 +362,8 @@
           <p>Instead of only listing facts, this site explains how each artifact helps answer the essential question for that page.</p>
         </div>
         <div class="mini-box">
-          <h3>Teacher note</h3>
-          <p class="note">Replace any images or wording your teacher wants changed, then publish your Google Site and link it in Canvas.</p>
+          <h3>Project note</h3>
+          <p class="note">This version uses local image files stored in your <strong>images</strong> folder so they show up correctly on GitHub Pages.</p>
         </div>
       </div>
     </section>
@@ -381,7 +417,7 @@
         <h3 class="artifacts-title">Artifacts</h3>
         <div class="artifact-grid">
           <article class="artifact-card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Big_four_at_the_Paris_Peace_Conference%2C_27_May_1919.jpg" alt="Paris Peace Conference leaders in 1919">
+            <img src="images/versailles.jpg" alt="Paris Peace Conference leaders in 1919">
             <div class="artifact-body">
               <span class="caption-label">Artifact 1</span>
               <h4>Treaty of Versailles and the Paris Peace Conference</h4>
@@ -395,7 +431,7 @@
           </article>
 
           <article class="artifact-card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Bundesarchiv_Bild_102-14439%2C_Berlin%2C_Arbeitslose_vor_dem_Arbeitsamt.jpg" alt="Unemployed people in Germany during economic crisis">
+            <img src="images/depression.jpg" alt="Unemployed people in Germany during economic crisis">
             <div class="artifact-body">
               <span class="caption-label">Artifact 2</span>
               <h4>The Great Depression in Germany</h4>
@@ -409,7 +445,7 @@
           </article>
 
           <article class="artifact-card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Bundesarchiv_Bild_183-H28422%2C_N%C3%BCrnberg%2C_Reichsparteitag%2C_Hitler_spricht.jpg" alt="Hitler speaking at Nuremberg rally">
+            <img src="images/hitler.jpg" alt="Hitler speaking at Nuremberg rally">
             <div class="artifact-body">
               <span class="caption-label">Artifact 3</span>
               <h4>Rise of Fascism in Germany</h4>
@@ -423,7 +459,7 @@
           </article>
 
           <article class="artifact-card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/0/0a/1938_Munich_Agreement.jpg" alt="Leaders at Munich Agreement 1938">
+            <img src="images/munich.jpg" alt="Leaders at Munich Agreement 1938">
             <div class="artifact-body">
               <span class="caption-label">Artifact 4</span>
               <h4>Appeasement and the Munich Agreement</h4>
@@ -437,7 +473,7 @@
           </article>
 
           <article class="artifact-card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/1/10/Bundesarchiv_Bild_183-R94623%2C_Rheinlandbesetzung.jpg" alt="German troops in the Rhineland">
+            <img src="images/rhineland.jpg" alt="German troops in the Rhineland">
             <div class="artifact-body">
               <span class="caption-label">Artifact 5</span>
               <h4>Remilitarization of the Rhineland</h4>
@@ -451,7 +487,7 @@
           </article>
 
           <article class="artifact-card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Stukas_over_Poland_1939.jpg" alt="German attack on Poland in 1939">
+            <img src="images/poland.jpg" alt="German attack on Poland in 1939">
             <div class="artifact-body">
               <span class="caption-label">Artifact 6</span>
               <h4>Invasion of Poland, 1939</h4>
@@ -528,7 +564,7 @@
         <h3 class="artifacts-title">Artifacts</h3>
         <div class="artifact-grid">
           <article class="artifact-card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/United_Nations_Fight_for_Freedom_poster.jpg" alt="Allied propaganda poster">
+            <img src="images/allies.jpg" alt="Allied propaganda poster">
             <div class="artifact-body">
               <span class="caption-label">Artifact 1</span>
               <h4>Allied Powers Propaganda Poster</h4>
@@ -541,7 +577,7 @@
           </article>
 
           <article class="artifact-card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Churchill_V_sign_HU_55521.jpg" alt="Winston Churchill making V sign">
+            <img src="images/churchill.jpg" alt="Winston Churchill making V sign">
             <div class="artifact-body">
               <span class="caption-label">Artifact 2</span>
               <h4>Britain and the Fight Against Nazi Expansion</h4>
@@ -554,7 +590,7 @@
           </article>
 
           <article class="artifact-card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Bundesarchiv_Bild_183-S69279%2C_Adolf_Hitler.jpg" alt="Adolf Hitler portrait">
+            <img src="images/germany.jpg" alt="Adolf Hitler portrait">
             <div class="artifact-body">
               <span class="caption-label">Artifact 3</span>
               <h4>Nazi Germany and Fascist Ideology</h4>
@@ -568,7 +604,7 @@
           </article>
 
           <article class="artifact-card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Japanese_troops_entering_Manila.jpg" alt="Japanese troops entering Manila">
+            <img src="images/japan.jpg" alt="Japanese troops entering Manila">
             <div class="artifact-body">
               <span class="caption-label">Artifact 4</span>
               <h4>Imperial Japan and Expansion in Asia</h4>
@@ -582,7 +618,7 @@
           </article>
 
           <article class="artifact-card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Raising_the_Flag_on_Iwo_Jima%2C_larger_-_edit1.jpg" alt="US soldiers raising flag on Iwo Jima">
+            <img src="images/usa.jpg" alt="US soldiers raising flag on Iwo Jima">
             <div class="artifact-body">
               <span class="caption-label">Artifact 5</span>
               <h4>The United States After Pearl Harbor</h4>
@@ -595,7 +631,7 @@
           </article>
 
           <article class="artifact-card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/7/7f/Russian_army_enters_Budapest_Fortepan_71366.jpg" alt="Soviet troops in Europe">
+            <img src="images/ussr.jpg" alt="Soviet troops in Europe">
             <div class="artifact-body">
               <span class="caption-label">Artifact 6</span>
               <h4>The Soviet Union Joins the Allied Side</h4>
@@ -651,10 +687,6 @@
         <li><a href="https://commons.wikimedia.org/wiki/File:Raising_the_Flag_on_Iwo_Jima,_larger_-_edit1.jpg" target="_blank">Iwo Jima image</a></li>
         <li><a href="https://commons.wikimedia.org/wiki/File:Russian_army_enters_Budapest_Fortepan_71366.jpg" target="_blank">Soviet troops image</a></li>
       </ul>
-      <p class="note">
-        Important: if your teacher wants you to use your own researched artifacts instead of these sample ones, swap the images, keep the caption format,
-        and leave a source link at the end of each artifact.
-      </p>
     </section>
   </main>
 
