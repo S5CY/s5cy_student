@@ -168,87 +168,60 @@ console.log("Your answers will be recorded.");
 console.log("You only get one attempt for each question.");
 console.log("");
 
-// ==============================
-// STUDENT-DEVELOPED FUNCTION SECTION
-// What this section does:
-// - runs the quiz using a parameter (questionList)
-// - uses a loop to go through the questions
-// - uses IF statements to check answers
-// - records results for the final summary
-// This is the main function that helps meet Create PT requirements.
-// ==============================
 
 async function runQuiz(questionList) {
   let score = 0;
 
-  // LIST USED FOR RECORDING RESULTS
-  // What this does:
-  // - stores what the user answered for each question
-  // - stores whether they were correct
   const recordedAnswers = [];
 
-  // LOOP SECTION
-  // What this does:
-  // - repeats once for every question in the list
+  // this is the outer loop. It goes through each question.
+  // I know this because it says i<questionList.length, and so it will look at each question in the list.
   for (let i = 0; i < questionList.length; i++) {
     const currentQuestion = questionList[i];
 
-    console.log(currentQuestion.question);
+    // currentQuestion.question - what does the . do? The . is used to get instance variables out of an object.
+    // Basically, currentQuestion is a type of data that stores a question and a list of potential answers, as well as an answer choice.
+    // To look at the question itself, we use someQuestion.question  
+    // Again, the . gets stuff out of an object.
+    console.log(currentQuestion.question);// this outputs the current question.
     for (let j = 0; j < currentQuestion.choices.length; j++) {
       console.log(currentQuestion.choices[j]);
     }
 
     let userAnswer = await askQuestion("Your answer: ");
     console.log("");
-
-    // IF STATEMENT SECTION
-    // What this does:
-    // - checks whether the input is valid
-    // - if not valid, it records it as invalid and moves on
+    typedInvalidInput = false
+    gotCorrectAnswer = false
     if (
       userAnswer !== "A" &&
       userAnswer !== "B" &&
       userAnswer !== "C" &&
       userAnswer !== "D"
     ) {
-      recordedAnswers.push({
+      gotCorrectAnswer = false;
+      typedInvalidInput = true;
+      console.log("That was not A, B, C, or D, so it was recorded as incorrect.");
+    }
+    else if (userAnswer === currentQuestion.answer) {
+        score++;
+        gotCorrectAnswer = true;
+        typedInvalidInput = false;
+    } else {
+        gotCorrectAnswer = false;
+        typedInvalidInput = false;
+    }
+
+     recordedAnswers.push({
         number: i + 1,
         userAnswer: userAnswer,
         correctAnswer: currentQuestion.answer,
-        isCorrect: false,
+        isCorrect: gotCorrectAnswer,
         explanation: currentQuestion.explanation,
-        wasInvalid: true
-      });
+        wasInvalid: typedInvalidInput
+      })
 
-      console.log("That was not A, B, C, or D, so it was recorded as incorrect.");
-      console.log("Answer recorded.\n");
-    } else {
-      // IF STATEMENT SECTION
-      // What this does:
-      // - checks whether the user's answer matches the correct answer
-      if (userAnswer === currentQuestion.answer) {
-        score++;
-        recordedAnswers.push({
-          number: i + 1,
-          userAnswer: userAnswer,
-          correctAnswer: currentQuestion.answer,
-          isCorrect: true,
-          explanation: currentQuestion.explanation,
-          wasInvalid: false
-        });
-      } else {
-        recordedAnswers.push({
-          number: i + 1,
-          userAnswer: userAnswer,
-          correctAnswer: currentQuestion.answer,
-          isCorrect: false,
-          explanation: currentQuestion.explanation,
-          wasInvalid: false
-        });
-      }
-
-      console.log("Answer recorded.\n");
-    }
+    console.log("Answer recorded.\n");
+    
   }
 
   return { score, recordedAnswers };
@@ -271,9 +244,6 @@ function showFinalSummary(score, totalQuestions, recordedAnswers) {
   console.log(`Score: ${score}/${totalQuestions}`);
   console.log(`Percentage: ${percentage}%`);
 
-  // IF STATEMENT SECTION
-  // What this does:
-  // - gives feedback based on the user's performance
   if (percentage >= 90) {
     console.log("Performance: Excellent work! You are very ready.");
   } else if (percentage >= 70) {
@@ -320,6 +290,11 @@ function showFinalSummary(score, totalQuestions, recordedAnswers) {
 
 async function main() {
   const results = await runQuiz(questions);
+  // Here is where you CALLING showFinalSummary.
+  // CALLING a function means to make the computer EXCUTE THE INSTRUCTIONS inside the function.
+  // DEFINING a function is where you make a new function. 
+  // My analogy: DEFINING a function is like writing a new recipe.
+  //             CALLING a function is like telling the computer to cook the recipe for you.
   showFinalSummary(results.score, questions.length, results.recordedAnswers);
   rl.close();
 }
