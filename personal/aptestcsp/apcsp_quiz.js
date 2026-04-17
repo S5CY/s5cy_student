@@ -1,28 +1,9 @@
-// AP CSP Quiz Game
-// This program is designed to be simple and Create PT-friendly.
-// It uses input, output, a list, and a student-developed function
-// with a parameter, a loop, and an if statement.
-
-// ==============================
-// INPUT SETUP SECTION
-// What this section does:
-// - lets the user type answers in the terminal
-// - uses Node's built-in readline so you do not need to install anything
-// ==============================
-
 const readline = require("readline");
 
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
-
-// ==============================
-// INPUT FUNCTION SECTION
-// What this section does:
-// - asks the user for input
-// - returns what they typed
-// ==============================
 
 function askQuestion(promptText) {
   return new Promise((resolve) => {
@@ -31,15 +12,6 @@ function askQuestion(promptText) {
     });
   });
 }
-
-// ==============================
-// LIST SECTION
-// What this section does:
-// - stores the quiz questions in a list
-// - each question has the question text, answer choices, correct answer,
-//   and a short explanation for the final summary
-// - this list helps manage complexity because all quiz data is stored together
-// ==============================
 
 const questions = [
   {
@@ -154,12 +126,6 @@ const questions = [
   }
 ];
 
-// ==============================
-// OUTPUT SECTION
-// What this section does:
-// - shows the title and directions to the user
-// ==============================
-
 console.log("======================================");
 console.log("        AP CSP Review Quiz Game       ");
 console.log("======================================");
@@ -174,16 +140,10 @@ async function runQuiz(questionList) {
 
   const recordedAnswers = [];
 
-  // this is the outer loop. It goes through each question.
-  // I know this because it says i<questionList.length, and so it will look at each question in the list.
   for (let i = 0; i < questionList.length; i++) {
     const currentQuestion = questionList[i];
 
-    // currentQuestion.question - what does the . do? The . is used to get instance variables out of an object.
-    // Basically, currentQuestion is a type of data that stores a question and a list of potential answers, as well as an answer choice.
-    // To look at the question itself, we use someQuestion.question  
-    // Again, the . gets stuff out of an object.
-    console.log(currentQuestion.question);// this outputs the current question.
+    console.log(currentQuestion.question);
     for (let j = 0; j < currentQuestion.choices.length; j++) {
       console.log(currentQuestion.choices[j]);
     }
@@ -226,14 +186,6 @@ async function runQuiz(questionList) {
 
   return { score, recordedAnswers };
 }
-
-// ==============================
-// FINAL SUMMARY FUNCTION
-// What this section does:
-// - calculates the percentage
-// - prints a performance message
-// - shows question-by-question results at the end
-// ==============================
 
 function showFinalSummary(score, totalQuestions, recordedAnswers) {
   const percentage = ((score / totalQuestions) * 100).toFixed(0);
@@ -279,22 +231,8 @@ function showFinalSummary(score, totalQuestions, recordedAnswers) {
   }
 }
 
-// ==============================
-// MAIN PROGRAM SECTION
-// What this section does:
-// - calls the quiz function
-// - gets the returned score and recorded answers
-// - displays the final summary
-// - closes the input system at the end
-// ==============================
-
 async function main() {
   const results = await runQuiz(questions);
-  // Here is where you CALLING showFinalSummary.
-  // CALLING a function means to make the computer EXCUTE THE INSTRUCTIONS inside the function.
-  // DEFINING a function is where you make a new function. 
-  // My analogy: DEFINING a function is like writing a new recipe.
-  //             CALLING a function is like telling the computer to cook the recipe for you.
   showFinalSummary(results.score, questions.length, results.recordedAnswers);
   rl.close();
 }
